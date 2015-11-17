@@ -101,7 +101,7 @@ When it's time to plug in the eeZee Tiny board, locate the white rectangle next 
 
 You can find example code in [examples](https://github.com/shimniok/eeZeeTiny841/tree/master/examples)
 
-This example implements a Larson scanner, individually turning on pins PA0-7, PB0-2. Connect LEDs and enjoy the light show. Source: [larson.c](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/larson/larson.c). Binary: [larson.hex](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/larson/larson.hex)
+This example implements a Larson scanner, individually turning on pins PA0-7, PB0-2. Connect LEDs and enjoy the light show. Source: [larson.c](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/larson/larson.c).
 
 ```
 /** ATtiny841 test
