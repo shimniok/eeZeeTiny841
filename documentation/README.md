@@ -55,6 +55,16 @@ Assembly is easy. And, you can learn how to solder at the same time. Review [Spa
 * Check vertical alignment of the ISP header and adjust by melting the solder joint, if necessary.
 * Solder the remaining pin.
 
+### Cleanup
+
+You'll want to remove the rosin and flux
+
+I usually just use isopropyl alcohol and an old toothbrush
+
+You can also buy chemicals specifically for removing flux and rosin
+
+![insert pin headers](images/assembly_isopropyl.jpg)
+
 ## Getting Started
 
 ### IDE
@@ -85,9 +95,7 @@ You can also use an AVRISP MkII, your Arduino ([here's how](http://arduino.cc/en
 
 When it's time to plug in the eeZee Tiny board, locate the white rectangle next to the ISP header which marks pin 1.
 
-<img src='https://lh5.googleusercontent.com/-wPFxKrqw4eo/VHZXhOeSnPI/AAAAAAAAKlI/Hc-qc09wAYA/w893-h571-no/AVRISP6.jpg' width='300' />
-
-<img src='http://www.batsocks.co.uk/img/info_isp/ISP%206%20way%20pinout.png' />
+![AVRISP Header](images/AVRISP6.jpg)
 
 ### Example Code
 
@@ -135,8 +143,3 @@ int main()
 # Operating Conditions #
 
 Please use your ATtiny breakout boards with regulated supplies of 5V or less, with minimal ripple, at temperatures around 25C (77F). Do not use the boards in high temperature conditions.
-
-# Source #
-  * [source](https://code.google.com/p/bot-thoughts-eezee/source/browse/#svn%2Ftrunk%2FeeZeeTiny841)
-  * [electronics](https://code.google.com/p/bot-thoughts-eezee/source/browse/#svn%2Ftrunk%2FeeZeeTiny841%2Felectronics)
-  * [firmware demos](https://code.google.com/p/bot-thoughts-eezee/source/browse/#svn%2Ftrunk%2FeeZeeTiny841%2Ffirmware)
