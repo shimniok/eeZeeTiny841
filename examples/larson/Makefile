@@ -26,7 +26,7 @@ AVRDUDE			= avrdude
 #     3 EESAVE, preserve EEPROM during chip erase (*disable=1, enable=0)
 #   2:0 BODLEVEL, sets BOD trigger level (1.8V=111, 2.5V=101, 4.3V=100)
 #
-HFUSE = 0xdf
+HFUSE	= 0xdf
 
 # LFUSE
 #     7 CKDIV8, divide clock by 8 (enable=0, *disable=1)
@@ -54,8 +54,10 @@ HFUSE = 0xdf
 #		 Xtal Osc, Cer Res >8MHz	1K CK		11110
 #		*Xtal Osc, Cer Res >8MHz	16K CK		01111
 #
-#LFUSE = 0xe2 # internal 8MHz, disable div 8, 6 CK startup
-LFUSE = 0x6f # External Xtal Osc, >8Mhz, 16K CK startup
+# internal 8MHz, disable div 8, 6 CK startup
+#LFUSE = 0xe2
+# external Xtal >8MHz, disable div 8, 16K CK startup
+LFUSE	= 0x6f
 
 # EFUSE
 #	7:5 ULPOSCSEL, ULP Oscillator Select (*32kHz=111, 64kHz=110, 128kHz=101, 256kHz=100, 512kHz=011)
@@ -63,7 +65,7 @@ LFUSE = 0x6f # External Xtal Osc, >8Mhz, 16K CK startup
 # 	2:1 BODACT, Brown Out Disable, Active mode (*disabled=11, sampled=01, enabled=10)
 # 	  0 SELFPRGEN, Self Program Enable (*disabled=1, enabled=0)
 #
-EFUSE = 0xff
+EFUSE	= 0xff
 
 ## Objects that must be built in order to link
 OBJECTS = larson.o 
