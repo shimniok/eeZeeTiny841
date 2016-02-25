@@ -86,31 +86,43 @@ You can also buy chemicals specifically for removing flux and rosin
 
 ## Getting Started
 
-### IDE
+To get started writing code for ATtiny, you need:
 
-To write code for ATtiny, you can use the following IDEs:
+  * a standard *AVR-GCC and IDE*, or you can use *Arduino*.
+  * a hardware programmer for *Flashing the Chip*
 
-  * [AVR Studio](http://www.atmel.com/tools/STUDIOARCHIVE.aspx)
-  * [Atmel Studio](http://www.atmel.com/microsite/atmel_studio6/)
-  * Eclipse and the [AVR Plugin](http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin)
-  * Arduino IDE? Not yet. I'm porting [arduino-tiny core](https://github.com/shimniok/arduino-tiny). Want to help?
+### Arduino
 
-### Toolchain
+ 1. Download the Arduino IDE if you don't have it yet.
+ * Next, install Spence's [arduino-tiny-841 core](https://github.com/SpenceKonde/arduino-tiny-841)
+   * Follow the installation instructions
+   * You'll need to add the correct ```avrdude.conf``` file
+ * For I2C (the 841 hardware only supports slave I2C) you'll need the [WireS library](https://github.com/orangkucing/WireS)
+ * [Update fuses](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/fuses) to use the onboard crystal, if installed. Refer to the datasheet or see *ATtiny841 Fuses* below.
+   * HFUSE
+   * LFUSE
+   * EFUSE
 
-  * Install  [ATmel AVR Toolchain](http://www.atmel.com/products/microcontrollers/avr/tinyAVR.aspx?tab=tools) for either Windows or Linux.
-  * Install the latest avrdude.
-  * As of Nov 26, 2014, you must still add the contents of [add\_to\_avrdude.conf](https://bot-thoughts-eezee.googlecode.com/svn/trunk/eeZeeTiny841/setup/add_to_avrdude.conf) to your avrdude.conf.
+### AVR-GCC and IDE
 
-### Programmer
+Install the avr-gcc toolchain and a suitable IDE:
 
+  * IDE: [AVR Studio](http://www.atmel.com/tools/STUDIOARCHIVE.aspx) or [Atmel Studio](http://www.atmel.com/microsite/atmel_studio6/) on Windows or
+  * IDE: Eclipse and the [AVR Plugin](http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin) on all platforms.
+  * Toolchain: install  [ATmel AVR Toolchain](http://www.atmel.com/products/microcontrollers/avr/tinyAVR.aspx?tab=tools) for either Windows or Linux.
+  * Flashing: install the latest version of [avrdude](http://www.nongnu.org/avrdude/), then add the contents of [add\_to\_avrdude.conf](https://bot-thoughts-eezee.googlecode.com/svn/trunk/eeZeeTiny841/setup/add_to_avrdude.conf) to your avrdude.conf (as of Feb 25, 2016).
+
+### Flashing The Chip
+
+#### Programmers
 I use and recommend the following programmers:
 
+  * [AVR Dragon](http://www.newark.com/atmel/atavrdragon/in-circuit-debug-prog-jtag-spi/dp/68T2063) - low cost, with debuggging
   * [pololu.com Pololu AVR Programmer](http://www.pololu.com/product/1300). Follow the instructions in the [User's Guide pdf](http://www.pololu.com/docs/0J36)
-  * AVR Dragon
 
 You can also use an AVRISP MkII, your Arduino ([here's how](http://arduino.cc/en/Tutorial/ArduinoISP)), or other AVR ISP compatible hardware.
 
-### ISP Header
+#### ISP Header
 
 When it's time to plug in the eeZee Tiny board, locate the white rectangle next to the ISP header which marks pin 1.
 
@@ -118,46 +130,8 @@ When it's time to plug in the eeZee Tiny board, locate the white rectangle next 
 
 ### Example Code
 
-You can find example code in [examples](https://github.com/shimniok/eeZeeTiny841/tree/master/examples)
-
-This example implements a Larson scanner, individually turning on pins PA0-7, PB0-2. Connect LEDs and enjoy the light show. Source: [larson.c](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/larson/larson.c).
-
-```
-/** ATtiny841 test
- *
- * Author: Michael Shimniok (www.bot-thoughts.com)
- * Description: Sequentially turns on a single pin on PA0-7 and PB0-2 (PB3 is reset)
- *
- */
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include <util/delay.h>
-
-int main()
-{
-  char i;
-
-  PORTA=0;
-  PORTB=0;
-  DDRA=0xff;   // All PORTA as output
-  DDRB=0x07;   // PB0-2, PB3 is reset
-
-  while (1) {
-    for (i = 0 ; i < 8; i++) {
-      PORTA = (1 << i);
-      _delay_ms(300);
-    }
-    PORTA = 0;
-
-    for (i = 2; i < 3; i++) {
-      PORTB = (1 << i);
-      _delay_ms(300);
-    }
-    PORTB = 0;
-  }
-
-}
-```
+ * [avr-gcc examples](https://github.com/shimniok/eeZeeTiny841/tree/master/examples)
+ * [Arduino examples](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/arduino)
 
 ## Operating Conditions
 
@@ -166,6 +140,8 @@ Please use your ATtiny breakout boards with regulated supplies of 5V or less, wi
 ## ATtiny841 Fuses
 
 When eeZee Tiny841 ships, the fuses are set as indicated with * below. If your board has a crystal oscillator, you'll want to change LFUSE as indicated by **
+
+You can use [this makefile](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/fuses) to update your fuses to use the onboard crystal (if installed) or internal oscillator.
 
 ### HFUSE
 Ships with HFUSE=0xDF
