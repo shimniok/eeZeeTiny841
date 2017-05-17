@@ -97,11 +97,10 @@ To get started writing code for ATtiny, you need:
  * Next, install Spence's [arduino-tiny-841 core](https://github.com/SpenceKonde/arduino-tiny-841)
    * In Arduino 1.6.* you can install this from the Boards Manager
    * For older Arduino, follow the instructions above. Also, you may need to add the correct ```avrdude.conf``` file
- * For I2C (the 841 hardware only supports slave I2C) you'll need the [WireS library](https://github.com/orangkucing/WireS)
  * [Update fuses](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/fuses) to use the onboard crystal, if installed. Refer to the datasheet or see *ATtiny841 Fuses* below.
-   * HFUSE
-   * LFUSE
-   * EFUSE
+   * HFUSE = 0xdf (reset enabled, debugwire disabled, SPI programming enabled, WDT off, EESAVE disabled, BOD 1.8V)
+   * LFUSE = 0xcf (Xtal >8MHz, disable div 8, 16K CK startup)
+   * EFUSE = 0xff (BOD disable, 32kHz ULP oscillator, Self Program disabled)
 
 ### AVR-GCC and IDE
 
