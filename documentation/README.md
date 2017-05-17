@@ -95,8 +95,8 @@ To get started writing code for ATtiny, you need:
 
  1. Download the Arduino IDE if you don't have it yet.
  * Next, install Spence's [arduino-tiny-841 core](https://github.com/SpenceKonde/arduino-tiny-841)
-   * Follow the installation instructions
-   * You'll need to add the correct ```avrdude.conf``` file
+   * In Arduino 1.6.* you can install this from the Boards Manager
+   * For older Arduino, follow the instructions above. Also, you may need to add the correct ```avrdude.conf``` file
  * For I2C (the 841 hardware only supports slave I2C) you'll need the [WireS library](https://github.com/orangkucing/WireS)
  * [Update fuses](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/fuses) to use the onboard crystal, if installed. Refer to the datasheet or see *ATtiny841 Fuses* below.
    * HFUSE
@@ -110,17 +110,26 @@ Install the avr-gcc toolchain and a suitable IDE:
   * IDE: [AVR Studio](http://www.atmel.com/tools/STUDIOARCHIVE.aspx) or [Atmel Studio](http://www.atmel.com/microsite/atmel_studio6/) on Windows or
   * IDE: Eclipse and the [AVR Plugin](http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin) on all platforms.
   * Toolchain: install  [ATmel AVR Toolchain](http://www.atmel.com/products/microcontrollers/avr/tinyAVR.aspx?tab=tools) for either Windows or Linux.
-  * Flashing: install the latest version of [avrdude](http://www.nongnu.org/avrdude/), then add the contents of [add\_to\_avrdude.conf](https://bot-thoughts-eezee.googlecode.com/svn/trunk/eeZeeTiny841/setup/add_to_avrdude.conf) to your avrdude.conf (as of Feb 25, 2016).
+  * Flashing: install the latest version of [avrdude](http://www.nongnu.org/avrdude/), then add the contents of [add\_to\_avrdude.conf](https://raw.githubusercontent.com/shimniok/eeZeeTiny841/master/setup/add_to_avrdude.conf) -- located in the setup directory of this repo -- to your avrdude.conf (as of May 17, 2017).
+
+Location of avrdude.conf depends on your operating system, and the method of installation (rpm, distro, which package used, etc.)
 
 ### Flashing The Chip
 
 #### Programmers
 I use and recommend the following programmers:
 
-  * [AVR Dragon](http://www.newark.com/atmel/atavrdragon/in-circuit-debug-prog-jtag-spi/dp/68T2063) - low cost, with debuggging
+  * [AVR Dragon](http://www.newark.com/atmel/atavrdragon/in-circuit-debug-prog-jtag-spi/dp/68T2063) - low cost, with debuggging. See below for installation.
   * [pololu.com Pololu AVR Programmer](http://www.pololu.com/product/1300). Follow the instructions in the [User's Guide pdf](http://www.pololu.com/docs/0J36)
 
 You can also use an AVRISP MkII, your Arduino ([here's how](http://arduino.cc/en/Tutorial/ArduinoISP)), or other AVR ISP compatible hardware.
+
+#### Arduino and Programmers
+Spence's ATTiny core supports a number of programmers, but not AVR Dragon (as of May 17, 2017). To add it, you'll need to add the following to his package's programmers.txt file.
+
+On Linux this is located in ~/.arduino15/packages/ATTinyCore/avr/*/programmers.txt where * is a version number of the package. On Windows look for ATTinyCore/avr/*/programmers.txt in %HOMEPATH%\AppData\Roaming\Arduino15\packages\
+
+Simply add the contents of [add_to_programmers.txt](https://raw.githubusercontent.com/shimniok/eeZeeTiny841/master/setup/add_to_programmers.txt) -- located in the setup directory of this repo -- to the programmers.txt file.
 
 #### ISP Header
 
