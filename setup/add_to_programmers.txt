@@ -1,0 +1,8 @@
+# Add the following lines to programmers.txt (see Documentation)
+
+dragon.name=AVR Dragon ISP mode (ATtiny)
+dragon.communication=usb
+dragon.protocol=dragon_isp
+dragon.program.tool=avrdude
+usbtinyisp2.program.extra_params=-Pusb
+
