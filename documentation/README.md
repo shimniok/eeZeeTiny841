@@ -11,7 +11,6 @@ Want one? [Buy now on Tindie](https://www.tindie.com/products/bot_thoughts/eezee
 ## Pinout
 
 ![pinout](images/Tiny841_pinout.jpg)
-https://github.com/shimniok/eeZeeTiny841/tree
 
 ## Getting Started
 
