@@ -4,7 +4,7 @@ Arduino is probably the simplest development environment for developing with you
 
 You will also need a [Hardware Programmer](HardwareProgrammer.md).
 
-You can find example code in the [Arduino examples](https://github.com/shimniok/eeZeeTiny841/tree/master/examples/arduino) folder.
+You can find example code in the [Arduino examples](../examples/arduino) folder.
 
 1. Download and install the Arduino IDE, version 1.6.* (You should only have to do this once after installing Arduino).
 * Next, open the [Boards Manager](https://learn.adafruit.com/add-boards-arduino-v164) and install Spence Konde's [ATTinyCore](https://github.com/SpenceKonde/arduino-tiny-841)
