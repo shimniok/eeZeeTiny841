@@ -1,5 +1,7 @@
 # Getting Started With avr-gcc
 
+You can find example code and makefiles in the [examples](../examples/avr-gcc) subdirectory of this repo.
+
 ## IDE
 
 Here are a few of the options for writing code for AVR:
@@ -27,7 +29,3 @@ Eclipse and the [AVR Plugin](http://avr-eclipse.sourceforge.net/wiki/index.php/T
 ## Hardware Programmer
 
 You will also need a [Hardware Programmer](HardwareProgrammer.md)
-
-## Example Code
-
-You can find example code and makefiles in the ```examples``` subdirectory of this repo.
