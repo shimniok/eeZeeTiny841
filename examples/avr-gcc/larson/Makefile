@@ -5,8 +5,10 @@
 ## General Flags
 PROJECT 		= larson
 MCU 			= attiny841
-PORT 			= usb
-PROGRAMMER 		= dragon_isp
+#PORT 			= usb
+PORT			= /dev/ttyUSB0
+#PROGRAMMER 		= dragon_isp
+PROGRAMMER		= stk500v2
 F_CPU 			= 8000000UL
 TARGET 			= $(PROJECT).elf
 AVRBIN 			= /opt/avr/bin
@@ -55,9 +57,9 @@ HFUSE	= 0xdf
 #		*Xtal Osc, Cer Res >8MHz	16K CK		01111
 #
 # internal 8MHz, disable div 8, 6 CK startup
-LFUSE = 0xe2
+#LFUSE = 0xe2
 # external Xtal >8MHz, disable div 8, 16K CK startup
-#LFUSE	= 0xcf
+LFUSE	= 0xcf
 
 # EFUSE
 #	7:5 ULPOSCSEL, ULP Oscillator Select (*32kHz=111, 64kHz=110, 128kHz=101, 256kHz=100, 512kHz=011)
