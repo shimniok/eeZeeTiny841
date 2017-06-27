@@ -2,6 +2,12 @@
 
 Arduino is probably the simplest development environment for developing with your eeZeeTiny board. It incorporates an Integrated Development Environment, toolchain, and software to flash the chip.
 
+The following ATtiny microcontrollers are supported by Arduino with ATTinyCore:
+* ATtiny25/45/85
+* ATtiny24/44/84
+* ATtiny441/841
+* ATtiny2313/4313
+
 You will also need a [Hardware Programmer](HardwareProgrammer.md).
 
 You can find example code in the [Arduino examples](../examples/arduino) folder.
